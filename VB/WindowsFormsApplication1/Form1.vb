@@ -107,11 +107,12 @@ Public Function CreateCodabarBarCode(ByVal BarCodeText As String) As XRBarCode
     barCode.Width = 300
     barCode.Height = 100
 
-    ' Adjust the properties specific to the bar code type.
-    CType(barCode.Symbology, CodabarGenerator).StartStopPair = CodabarStartStopPair.BN
-    CType(barCode.Symbology, CodabarGenerator).WideNarrowRatio = 2.5F
+	' Adjust the properties specific to the bar code type.
+	CType(barCode.Symbology, CodabarGenerator).StartSymbol = CodabarStartStopSymbol.C
+	CType(barCode.Symbology, CodabarGenerator).StopSymbol = CodabarStartStopSymbol.D
+	CType(barCode.Symbology, CodabarGenerator).WideNarrowRatio = 2.5F
 
-    Return barCode
+	Return barCode
 End Function
 #End Region ' #Codabar
 #Region "#Code11"

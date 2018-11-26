@@ -82,7 +82,8 @@ public XRBarCode CreateCodabarBarCode(string BarCodeText) {
     barCode.Height = 100;
 
     // Adjust the properties specific to the bar code type.
-    ((CodabarGenerator)barCode.Symbology).StartStopPair = CodabarStartStopPair.BN;
+    ((CodabarGenerator)barCode.Symbology).StartSymbol = CodabarStartStopSymbol.C;
+    ((CodabarGenerator)barCode.Symbology).StopSymbol = CodabarStartStopSymbol.D;
     ((CodabarGenerator)barCode.Symbology).WideNarrowRatio = 2.5F;
 
     return barCode;
