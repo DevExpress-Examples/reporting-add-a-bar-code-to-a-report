@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reporting_how-to-add-a-bar-code-to-a-report-e167", "Reporting_how-to-add-a-bar-code-to-a-report-e167\Reporting_how-to-add-a-bar-code-to-a-report-e167.csproj", "{1395CD97-BB74-4CA2-A20A-72C38F67CB4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reporting_how-to-add-a-bar-code-to-a-report-e167", "Reporting_how-to-add-a-bar-code-to-a-report-e167.csproj", "{1395CD97-BB74-4CA2-A20A-72C38F67CB4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DB4031AF-4ADF-4CE4-AE11-8FB06A54832F}
+		SolutionGuid = {414919CC-DF6B-4628-A5A1-DC0A12C8C256}
 	EndGlobalSection
 EndGlobal
