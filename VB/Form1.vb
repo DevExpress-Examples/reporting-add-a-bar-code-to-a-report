@@ -5,8 +5,6 @@ Imports System.Windows.Forms
 Imports DevExpress.XtraPrinting.BarCode
 Imports DevExpress.XtraReports.UI
 
-' ...
-
 Namespace BarcodesExample
 	Partial Public Class Form1
 		Inherits Form
@@ -111,6 +109,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateCode11BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -125,6 +124,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateCode39BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -143,6 +143,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateCode39ExBarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -161,6 +162,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateCode93BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -178,6 +180,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateCode93ExBarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -195,6 +198,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateCode128BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -212,6 +216,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateEAN8BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -226,6 +231,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateEAN13BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -240,6 +246,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateGS1128BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -257,6 +264,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateDataBarGS1BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -276,6 +284,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateDataMatrixBarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -298,6 +307,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateDataMatrixGS1BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -320,6 +330,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateIndustrial2of5BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -338,6 +349,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateIntelligentMailBarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -357,6 +369,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateIntelligentMailPackageBarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -380,6 +393,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateInterleaved2of5BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code controle.
 			Dim barCode As New XRBarCode()
@@ -398,6 +412,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateMatrix2of5BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -416,6 +431,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateCodeMSIBarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -433,6 +449,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreatePDF417BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -459,6 +476,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreatePostNetBarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -473,6 +491,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateQRCodeBarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -496,6 +515,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateUPCABarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -510,6 +530,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateUPCE0BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -524,6 +545,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateUPCE1BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -538,6 +560,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateUPCSupplemental2BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -552,6 +575,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateUPCSupplemental5BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -566,6 +590,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreateITF14BarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -584,6 +609,7 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
+
 		Public Function CreatePharmacodeBarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
