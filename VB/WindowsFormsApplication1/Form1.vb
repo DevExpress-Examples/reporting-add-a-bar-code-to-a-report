@@ -650,8 +650,6 @@ Private Function CreateBarCode(ByVal Type As BarCodeTypes) As XRBarCode
 			barCode = CreateIndustrial2of5BarCode("0123456789")
 		Case BarCodeTypes.IntelligentMail
 			barCode = CreateIntelligentMailBarCode("4408200000012345678991203")
-		Case BarCodeTypes.IntelligentMailPackage
-			barCode = CreateIntelligentMailPackageBarCode("9212391234567812345671")
 		Case BarCodeTypes.Interleaved2of5
 			barCode = CreateInterleaved2of5BarCode("0123456789")
 		Case BarCodeTypes.Matrix2of5
