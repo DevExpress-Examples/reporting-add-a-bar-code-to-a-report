@@ -1,4 +1,3 @@
-﻿Imports Microsoft.VisualBasic
 #Region "#Usings"
 Imports System
 Imports System.Collections.Generic
@@ -12,6 +11,7 @@ Imports DevExpress.XtraReports.UI
 Namespace WindowsFormsApplication1
 	Partial Public Class Form1
 		Inherits Form
+
 		Public Sub New()
 			InitializeComponent()
 		End Sub
@@ -32,6 +32,7 @@ Private Enum BarCodeTypes
 	DataMatrixGS1
 	Industrial2of5
 	IntelligentMail
+	IntelligentMailPackage
 	Interleaved2of5
 	Matrix2of5
 	CodeMSI
@@ -48,24 +49,8 @@ End Enum
 
 #Region "#DataSource"
 Private Class BarCode
-	Private privateType As BarCodeTypes
 	Public Property Type() As BarCodeTypes
-		Get
-			Return privateType
-		End Get
-		Set(ByVal value As BarCodeTypes)
-			privateType = value
-		End Set
-	End Property
-	Private privateDisplayName As String
 	Public Property DisplayName() As String
-		Get
-			Return privateDisplayName
-		End Get
-		Set(ByVal value As String)
-			privateDisplayName = value
-		End Set
-	End Property
 
 	Public Sub New(ByVal BarCodeType As BarCodeTypes, ByVal BarCodeName As String)
 		Type = BarCodeType
@@ -91,6 +76,7 @@ Private Function MakeBarCodesList() As List(Of BarCode)
 	list.Add(New BarCode(BarCodeTypes.DataMatrixGS1, "Data Matrix (GS1)"))
 	list.Add(New BarCode(BarCodeTypes.Industrial2of5, "Industrial 2 of 5"))
 	list.Add(New BarCode(BarCodeTypes.IntelligentMail, "Intelligent Mail"))
+	list.Add(New BarCode(BarCodeTypes.IntelligentMailPackage, "Intelligent Mail Package"))
 	list.Add(New BarCode(BarCodeTypes.Interleaved2of5, "Interleaved 2 of 5"))
 	list.Add(New BarCode(BarCodeTypes.Matrix2of5, "Matrix 2 of 5"))
 	list.Add(New BarCode(BarCodeTypes.CodeMSI, "MSI/Plessey"))
@@ -122,7 +108,8 @@ Public Function CreateCodabarBarCode(ByVal BarCodeText As String) As XRBarCode
 	barCode.Height = 100
 
 	' Adjust the properties specific to the bar code type.
-	CType(barCode.Symbology, CodabarGenerator).StartStopPair = CodabarStartStopPair.BN
+	CType(barCode.Symbology, CodabarGenerator).StartSymbol = CodabarStartStopSymbol.C
+	CType(barCode.Symbology, CodabarGenerator).StopSymbol = CodabarStartStopSymbol.D
 	CType(barCode.Symbology, CodabarGenerator).WideNarrowRatio = 2.5F
 
 	Return barCode
@@ -392,8 +379,8 @@ Public Function CreateIntelligentMailBarCode(ByVal BarCodeText As String) As XRB
 	' Adjust the bar code's main properties.
 	barCode.Text = BarCodeText
 	barCode.ShowText = True
-	barCode.WidthF = 300f
-	barCode.HeightF = 50f
+	barCode.WidthF = 300F
+	barCode.HeightF = 50F
 
 	' If the AutoModule property is set to false, uncomment the next line.
 	barCode.AutoModule = True
@@ -402,6 +389,31 @@ Public Function CreateIntelligentMailBarCode(ByVal BarCodeText As String) As XRB
 	Return barCode
 End Function
 #End Region ' #IntelligentMail
+#Region "#IntelligentMailPackage"
+Public Function CreateIntelligentMailPackageBarCode(ByVal BarCodeText As String) As XRBarCode
+	' Create a bar code control.
+	Dim barCode As New XRBarCode()
+
+	' Set the bar code's type to Intelligent Mail Package.
+	barCode.Symbology = New IntelligentMailPackageGenerator()
+
+	' Adjust the bar code's main properties.
+	barCode.Text = BarCodeText
+	barCode.ShowText = False
+	barCode.WidthF = 300
+	barCode.HeightF = 150F
+
+	' If the AutoModule property is set to false, uncomment the next line.
+	barCode.AutoModule = True
+	'barcode.Module = 3;
+
+	' Adjust the property specific to the bar code type.
+	' (Assigned below is the default value.)
+	CType(barCode.Symbology, IntelligentMailPackageGenerator).FNC1Substitute = "#"
+
+	Return barCode
+End Function
+#End Region ' #IntelligentMailPackage
 #Region "#Interleaved2of5"
 Public Function CreateInterleaved2of5BarCode(ByVal BarCodeText As String) As XRBarCode
 	' Create a bar code controle.
@@ -625,7 +637,7 @@ Public Function CreateITF14BarCode(ByVal BarCodeText As String) As XRBarCode
 
 	' Adjust the properties specific to the bar code type.
 	CType(barCode.Symbology, ITF14Generator).CalcCheckSum = False
-	CType(barCode.Symbology, ITF14Generator).WideNarrowRatio = 2.5f
+	CType(barCode.Symbology, ITF14Generator).WideNarrowRatio = 2.5F
 
 	Return barCode
 End Function
@@ -666,6 +678,8 @@ Private Function CreateBarCode(ByVal Type As BarCodeTypes) As XRBarCode
 			barCode = CreateIndustrial2of5BarCode("0123456789")
 		Case BarCodeTypes.IntelligentMail
 			barCode = CreateIntelligentMailBarCode("4408200000012345678991203")
+		Case BarCodeTypes.IntelligentMailPackage
+			barCode = CreateIntelligentMailPackageBarCode("9212391234567812345671")
 		Case BarCodeTypes.Interleaved2of5
 			barCode = CreateInterleaved2of5BarCode("0123456789")
 		Case BarCodeTypes.Matrix2of5
@@ -698,6 +712,8 @@ End Function
 
 #Region "#PublishReport"
 Private Sub button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles button1.Click
+	If Not Me.button1.IsHandleCreated Then Return
+
 	' Create a report and handle its BeforPrint event.
 	Dim report As New XtraReport()
 	AddHandler report.BeforePrint, AddressOf report_BeforePrint
@@ -710,16 +726,16 @@ End Sub
 #Region "#AddBarCode"
 Private Sub report_BeforePrint(ByVal sender As Object, ByVal e As PrintEventArgs)
 	' Create a bar code control.
-	Dim barCode As XRBarCode = CreateBarCode(CType(comboBox1.SelectedValue, BarCodeTypes))
+	Dim barCode As XRBarCode = CreateBarCode(DirectCast(comboBox1.SelectedValue, BarCodeTypes))
 
 	' Create a Detail band and add the bar code to it.
-	CType(sender, XtraReport).Bands.Add(New DetailBand())
-	CType(sender, XtraReport).Bands(BandKind.Detail).Controls.Add(barCode)
+	DirectCast(sender, XtraReport).Bands.Add(New DetailBand())
+	DirectCast(sender, XtraReport).Bands(BandKind.Detail).Controls.Add(barCode)
 End Sub
 #End Region ' #AddBarCode
 
 #Region "#PopulateComboBox"
-Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 	Dim data As List(Of BarCode) = MakeBarCodesList()
 	comboBox1.DataSource = data
 	comboBox1.DisplayMember = "DisplayName"
