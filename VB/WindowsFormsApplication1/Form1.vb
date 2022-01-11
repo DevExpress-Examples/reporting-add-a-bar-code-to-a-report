@@ -1,4 +1,4 @@
-﻿#Region "#Usings"
+#Region "#Usings"
 Imports System
 Imports System.Collections.Generic
 Imports System.Drawing.Printing
@@ -108,7 +108,8 @@ Public Function CreateCodabarBarCode(ByVal BarCodeText As String) As XRBarCode
 	barCode.Height = 100
 
 	' Adjust the properties specific to the bar code type.
-	CType(barCode.Symbology, CodabarGenerator).StartStopPair = CodabarStartStopPair.BN
+	CType(barCode.Symbology, CodabarGenerator).StartSymbol = CodabarStartStopSymbol.C
+	CType(barCode.Symbology, CodabarGenerator).StopSymbol = CodabarStartStopSymbol.D
 	CType(barCode.Symbology, CodabarGenerator).WideNarrowRatio = 2.5F
 
 	Return barCode
