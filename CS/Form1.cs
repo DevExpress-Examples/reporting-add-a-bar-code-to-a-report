@@ -12,11 +12,11 @@ namespace BarcodesExample {
         }
 
         private enum BarCodeTypes {
-            Codabar, Code11, Code39, Code39Extended, Code93, Code93Extended, Code128, EAN8, EAN13,
-            GS1128, GS1DataBar, DataMatrix, DataMatrixGS1, Industrial2of5, IntelligentMail,
-            IntelligentMailPackage, Interleaved2of5, Matrix2of5, CodeMSI, PDF417, PostNet, QRCode, UPCA,
-            UPCE0, UPCE1, UPCSupplemental2, UPCSupplemental5, UPCShippingContainer, Pharmacode,
-            DeutschePostLeitcode, DeutschePostIdentcode
+            Codabar, Code11, Code39, Code39Extended, Code93, Code93Extended, Code128, CodeMSI,
+            DataMatrix, DataMatrixGS1, DeutschePostIdentcode, DeutschePostLeitcode, EAN8, EAN13,
+            Industrial2of5, IntelligentMail, IntelligentMailPackage, Interleaved2of5, 
+            GS1128, GS1DataBar, Matrix2of5, PDF417, Pharmacode, PostNet, QRCode, 
+            SSCC,UPCA, UPCE0, UPCE1, UPCSupplemental2, UPCSupplemental5, UPCShippingContainer
         };
 
         private class BarCode {
@@ -39,12 +39,14 @@ namespace BarcodesExample {
             list.Add(new BarCode(BarCodeTypes.Code93, "Code 93"));
             list.Add(new BarCode(BarCodeTypes.Code93Extended, "Code 93 Extended"));
             list.Add(new BarCode(BarCodeTypes.Code128, "Code 128"));
+            list.Add(new BarCode(BarCodeTypes.DataMatrix, "Data Matrix (ECC200)"));
+            list.Add(new BarCode(BarCodeTypes.DataMatrixGS1, "Data Matrix (GS1)"));
+            list.Add(new BarCode(BarCodeTypes.DeutschePostIdentcode, "Deutsche Post Identcode"));
+            list.Add(new BarCode(BarCodeTypes.DeutschePostLeitcode, "Deutsche Post Leitcode"));
             list.Add(new BarCode(BarCodeTypes.EAN8, "EAN 8"));
             list.Add(new BarCode(BarCodeTypes.EAN13, "EAN 13"));
             list.Add(new BarCode(BarCodeTypes.GS1128, "GS1-128 - EAN-128 (UCC)"));
             list.Add(new BarCode(BarCodeTypes.GS1DataBar, "GS1 DataBar"));
-            list.Add(new BarCode(BarCodeTypes.DataMatrix, "Data Matrix (ECC200)"));
-            list.Add(new BarCode(BarCodeTypes.DataMatrixGS1, "Data Matrix (GS1)"));
             list.Add(new BarCode(BarCodeTypes.Industrial2of5, "Industrial 2 of 5"));
             list.Add(new BarCode(BarCodeTypes.IntelligentMail, "Intelligent Mail"));
             list.Add(new BarCode(BarCodeTypes.IntelligentMailPackage, "Intelligent Mail Package"));
@@ -52,16 +54,15 @@ namespace BarcodesExample {
             list.Add(new BarCode(BarCodeTypes.Matrix2of5, "Matrix 2 of 5"));
             list.Add(new BarCode(BarCodeTypes.CodeMSI, "MSI/Plessey"));
             list.Add(new BarCode(BarCodeTypes.PDF417, "PDF417"));
+            list.Add(new BarCode(BarCodeTypes.Pharmacode, "Pharmacode"));
             list.Add(new BarCode(BarCodeTypes.PostNet, "PostNet"));
             list.Add(new BarCode(BarCodeTypes.QRCode, "QR Code"));
+            list.Add(new BarCode(BarCodeTypes.SSCC, "SSCC"));
             list.Add(new BarCode(BarCodeTypes.UPCA, "UPC-A"));
             list.Add(new BarCode(BarCodeTypes.UPCE0, "UPC-E0"));
             list.Add(new BarCode(BarCodeTypes.UPCE1, "UPC-E1"));
             list.Add(new BarCode(BarCodeTypes.UPCSupplemental2, "UPC Supplemental 2"));
             list.Add(new BarCode(BarCodeTypes.UPCShippingContainer, "UPC Shipping Container Symbol (ITF-14)"));
-            list.Add(new BarCode(BarCodeTypes.Pharmacode, "Pharmacode"));
-            list.Add(new BarCode(BarCodeTypes.DeutschePostIdentcode, "Deutsche Post Identcode"));
-            list.Add(new BarCode(BarCodeTypes.DeutschePostLeitcode, "Deutsche Post Leitcode"));
 
             return list;
         }
@@ -492,6 +493,25 @@ namespace BarcodesExample {
             return barCode;
         }
 
+        public XRBarCode CreateSSCCBarCode(string BarCodeText) {
+            // Create a bar code control.
+            XRBarCode barCode = new XRBarCode();
+
+            // Set the bar code type to SSCC.
+            barCode.Symbology = new SSCCGenerator();
+
+            // Adjust the bar code's main properties.
+            barCode.Text = BarCodeText;
+            barCode.Width = 400;
+            barCode.Height = 100;
+            barCode.AutoModule = true;
+
+            // Adjust the properties specific to the bar code type.
+            ((SSCCGenerator)barCode.Symbology).CharacterSet = Code128Charset.CharsetB;
+
+            return barCode;
+        }
+
         public XRBarCode CreateUPCABarCode(string BarCodeText) {
             // Create a bar code control.
             XRBarCode barCode = new XRBarCode();
@@ -706,6 +726,9 @@ namespace BarcodesExample {
                 case BarCodeTypes.QRCode:
                     barCode = CreateQRCodeBarCode("01234-ABCD");
                     break;
+                case BarCodeTypes.SSCC:
+                    barCode = CreateSSCCBarCode("00106141411234567");
+                    break;
                 case BarCodeTypes.UPCA:
                     barCode = CreateUPCABarCode("00123456789");
                     break;
@@ -760,10 +783,6 @@ namespace BarcodesExample {
             comboBox1.DataSource = data;
             comboBox1.DisplayMember = "DisplayName";
             comboBox1.ValueMember = "Type";
-        }
-
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-
         }
     }
 }

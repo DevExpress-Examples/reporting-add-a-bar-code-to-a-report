@@ -23,33 +23,34 @@ Namespace BarcodesExample
 			Code93
 			Code93Extended
 			Code128
-			EAN8
-			EAN13
-			GS1128
-			GS1DataBar
+			CodeMSI
 			DataMatrix
 			DataMatrixGS1
+			DeutschePostIdentcode
+			DeutschePostLeitcode
+			EAN8
+			EAN13
 			Industrial2of5
 			IntelligentMail
 			IntelligentMailPackage
 			Interleaved2of5
+			GS1128
+			GS1DataBar
 			Matrix2of5
-			CodeMSI
 			PDF417
+			Pharmacode
 			PostNet
 			QRCode
+			SSCC
 			UPCA
 			UPCE0
 			UPCE1
 			UPCSupplemental2
 			UPCSupplemental5
 			UPCShippingContainer
-			Pharmacode
-			DeutschePostLeitcode
-			DeutschePostIdentcode
 		End Enum
 
-		#Region "DataSource"
+#Region "DataSource"
 		Private Class BarCode
 			Public Property Type() As BarCodeTypes
 			Public Property DisplayName() As String
@@ -70,12 +71,14 @@ Namespace BarcodesExample
 			list.Add(New BarCode(BarCodeTypes.Code93, "Code 93"))
 			list.Add(New BarCode(BarCodeTypes.Code93Extended, "Code 93 Extended"))
 			list.Add(New BarCode(BarCodeTypes.Code128, "Code 128"))
+			list.Add(New BarCode(BarCodeTypes.DataMatrix, "Data Matrix (ECC200)"))
+			list.Add(New BarCode(BarCodeTypes.DataMatrixGS1, "Data Matrix (GS1)"))
+			list.Add(New BarCode(BarCodeTypes.DeutschePostIdentcode, "Deutsche Post Identcode"))
+			list.Add(New BarCode(BarCodeTypes.DeutschePostLeitcode, "Deutsche Post Leitcode"))
 			list.Add(New BarCode(BarCodeTypes.EAN8, "EAN 8"))
 			list.Add(New BarCode(BarCodeTypes.EAN13, "EAN 13"))
 			list.Add(New BarCode(BarCodeTypes.GS1128, "GS1-128 - EAN-128 (UCC)"))
 			list.Add(New BarCode(BarCodeTypes.GS1DataBar, "GS1 DataBar"))
-			list.Add(New BarCode(BarCodeTypes.DataMatrix, "Data Matrix (ECC200)"))
-			list.Add(New BarCode(BarCodeTypes.DataMatrixGS1, "Data Matrix (GS1)"))
 			list.Add(New BarCode(BarCodeTypes.Industrial2of5, "Industrial 2 of 5"))
 			list.Add(New BarCode(BarCodeTypes.IntelligentMail, "Intelligent Mail"))
 			list.Add(New BarCode(BarCodeTypes.IntelligentMailPackage, "Intelligent Mail Package"))
@@ -83,16 +86,15 @@ Namespace BarcodesExample
 			list.Add(New BarCode(BarCodeTypes.Matrix2of5, "Matrix 2 of 5"))
 			list.Add(New BarCode(BarCodeTypes.CodeMSI, "MSI/Plessey"))
 			list.Add(New BarCode(BarCodeTypes.PDF417, "PDF417"))
+			list.Add(New BarCode(BarCodeTypes.Pharmacode, "Pharmacode"))
 			list.Add(New BarCode(BarCodeTypes.PostNet, "PostNet"))
 			list.Add(New BarCode(BarCodeTypes.QRCode, "QR Code"))
+			list.Add(New BarCode(BarCodeTypes.SSCC, "SSCC"))
 			list.Add(New BarCode(BarCodeTypes.UPCA, "UPC-A"))
 			list.Add(New BarCode(BarCodeTypes.UPCE0, "UPC-E0"))
 			list.Add(New BarCode(BarCodeTypes.UPCE1, "UPC-E1"))
-			list.Add(New BarCode(BarCodeTypes.UPCSupplemental2, "UPC Supplemental 2"))
 			list.Add(New BarCode(BarCodeTypes.UPCShippingContainer, "UPC Shipping Container Symbol (ITF-14)"))
-			list.Add(New BarCode(BarCodeTypes.Pharmacode, "Pharmacode"))
-			list.Add(New BarCode(BarCodeTypes.DeutschePostIdentcode, "Deutsche Post Identcode"))
-			list.Add(New BarCode(BarCodeTypes.DeutschePostLeitcode, "Deutsche Post Leitcode"))
+			list.Add(New BarCode(BarCodeTypes.UPCSupplemental2, "UPC Supplemental 2"))
 
 			Return list
 		End Function
@@ -566,9 +568,30 @@ Namespace BarcodesExample
 
 			Return barCode
 		End Function
-		#End Region
+#End Region
 
-		#Region "UPC-A"
+#Region "SSCC"
+		Public Function CreateSSCCBarCode(ByVal BarCodeText As String) As XRBarCode
+			' Create a bar code control.
+			Dim barCode As New XRBarCode()
+
+			' Set the bar code's type to EAN 128.
+			barCode.Symbology = New SSCCGenerator()
+
+			' Adjust the bar code's main properties.
+			barCode.Text = BarCodeText
+			barCode.Width = 400
+			barCode.Height = 100
+			barCode.AutoModule = True
+
+			' Adjust the properties specific to the bar code type.
+			CType(barCode.Symbology, SSCCGenerator).CharacterSet = Code128Charset.CharsetB
+
+			Return barCode
+		End Function
+#End Region
+
+#Region "UPC-A"
 		Public Function CreateUPCABarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a bar code control.
 			Dim barCode As New XRBarCode()
@@ -776,6 +799,8 @@ Namespace BarcodesExample
 					barCode = CreatePostNetBarCode("0123456789")
 				Case BarCodeTypes.QRCode
 					barCode = CreateQRCodeBarCode("01234-ABCD")
+				Case BarCodeTypes.SSCC
+					barCode = CreateSSCCBarCode("00106141411234567")
 				Case BarCodeTypes.UPCA
 					barCode = CreateUPCABarCode("00123456789")
 				Case BarCodeTypes.UPCE0
@@ -823,10 +848,6 @@ Namespace BarcodesExample
 			comboBox1.DisplayMember = "DisplayName"
 			comboBox1.ValueMember = "Type"
 		End Sub
-		#End Region
-
-		Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles comboBox1.SelectedIndexChanged
-
-		End Sub
+#End Region
 	End Class
 End Namespace
