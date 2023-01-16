@@ -68,18 +68,18 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateCodabarBarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Codabar
+            // Set the barcode's type to Codabar
             barCode.Symbology = new CodabarGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 300;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((CodabarGenerator)barCode.Symbology).StartSymbol = CodabarStartStopSymbol.C;
             ((CodabarGenerator)barCode.Symbology).StopSymbol = CodabarStartStopSymbol.D;
             ((CodabarGenerator)barCode.Symbology).WideNarrowRatio = 2.5F;
@@ -88,13 +88,13 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateCode11BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Code 11.
+            // Set the barcode's type to Code 11.
             barCode.Symbology = new Code11Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
@@ -103,18 +103,18 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateCode39BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Code 39.
+            // Set the barcode's type to Code 39.
             barCode.Symbology = new Code39Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((Code39Generator)barCode.Symbology).CalcCheckSum = false;
             ((Code39Generator)barCode.Symbology).WideNarrowRatio = 2.5F;
 
@@ -122,18 +122,18 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateCode39ExBarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Code 39 Extended.
+            // Set the barcode's type to Code 39 Extended.
             barCode.Symbology = new Code39ExtendedGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((Code39ExtendedGenerator)barCode.Symbology).CalcCheckSum = false;
             ((Code39ExtendedGenerator)barCode.Symbology).WideNarrowRatio = 2.5F;
 
@@ -141,64 +141,64 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateCode93BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Code 93.
+            // Set the barcode's type to Code 93.
             barCode.Symbology = new Code93Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((Code93Generator)barCode.Symbology).CalcCheckSum = false;
 
             return barCode;
         }
 
         public XRBarCode CreateCode93ExBarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Code 93 Extended.
+            // Set the barcode's type to Code 93 Extended.
             barCode.Symbology = new Code93ExtendedGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((Code93ExtendedGenerator)barCode.Symbology).CalcCheckSum = false;
 
             return barCode;
         }
 
         public XRBarCode CreateCode128BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Code 128.
+            // Set the barcode's type to Code 128.
             barCode.Symbology = new Code128Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((Code128Generator)barCode.Symbology).CharacterSet = Code128Charset.CharsetB;
 
             return barCode;
         }
 
         public XRBarCode CreateEAN8BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to EAN 8.
+            // Set the barcode's type to EAN 8.
             barCode.Symbology = new EAN8Generator();
 
             // Adjust the barcode's main properties.
@@ -210,13 +210,13 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateEAN13BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to EAN 13.
+            // Set the barcode's type to EAN 13.
             barCode.Symbology = new EAN13Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 275;
             barCode.Height = 200;
@@ -225,36 +225,36 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateGS1128BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to EAN 128.
+            // Set the barcode's type to EAN 128.
             barCode.Symbology = new EAN128Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((EAN128Generator)barCode.Symbology).CharacterSet = Code128Charset.CharsetB;
 
             return barCode;
         }
 
         public XRBarCode CreateDataBarGS1BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to GS1 DataBar.
+            // Set the barcode's type to GS1 DataBar.
             barCode.Symbology = new DataBarGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 250;
             barCode.Height = 160;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((DataBarGenerator)barCode.Symbology).FNC1Substitute = "#";
             ((DataBarGenerator)barCode.Symbology).SegmentsInRow = 4;
             ((DataBarGenerator)barCode.Symbology).Type = DataBarType.ExpandedStacked;
@@ -263,13 +263,13 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateDataMatrixBarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to DataMatrix.
+            // Set the barcode's type to DataMatrix.
             barCode.Symbology = new DataMatrixGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 150;
@@ -278,7 +278,7 @@ namespace BarcodesExample {
             barCode.AutoModule = true;
             //barcode.Module = 3;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((DataMatrixGenerator)barCode.Symbology).CompactionMode = DataMatrixCompactionMode.Text;
             ((DataMatrixGenerator)barCode.Symbology).MatrixSize = DataMatrixSize.MatrixAuto;
 
@@ -286,20 +286,20 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateDataMatrixGS1BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Data Matrix GS1.
+            // Set the barcode's type to Data Matrix GS1.
             barCode.Symbology = new DataMatrixGS1Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.AutoModule = true;
             barCode.Text = BarCodeText;
             barCode.ShowText = true;
             barCode.Width = 200;
             barCode.Height = 200;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             // (Assigned below are the default values.)
             ((DataMatrixGS1Generator)barCode.Symbology).FNC1Substitute = "#";
             ((DataMatrixGS1Generator)barCode.Symbology).HumanReadableText = true;
@@ -309,18 +309,18 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateIndustrial2of5BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Industrial 2 of 5.
+            // Set the barcode's type to Industrial 2 of 5.
             barCode.Symbology = new Industrial2of5Generator();
 
-            // Adjust the main properties of the bar code.
+            // Adjust the main properties of the barcode.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((Industrial2of5Generator)barCode.Symbology).CalcCheckSum = false;
             ((Industrial2of5Generator)barCode.Symbology).WideNarrowRatio = 3;
 
@@ -328,13 +328,13 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateIntelligentMailBarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Intelligent Mail.
+            // Set the barcode's type to Intelligent Mail.
             barCode.Symbology = new IntelligentMailGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.ShowText = true;
             barCode.WidthF = 300f;
@@ -348,13 +348,13 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateIntelligentMailPackageBarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Intelligent Mail Package.
+            // Set the barcode's type to Intelligent Mail Package.
             barCode.Symbology = new IntelligentMailPackageGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.ShowText = false;
             barCode.WidthF = 300;
@@ -364,7 +364,7 @@ namespace BarcodesExample {
             barCode.AutoModule = true;
             //barcode.Module = 3;
 
-            // Adjust the property specific to the bar code type.
+            // Adjust the property specific to the barcode type.
             // (Assigned below is the default value.)
             ((IntelligentMailPackageGenerator)barCode.Symbology).FNC1Substitute = "#";
 
@@ -372,18 +372,18 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateInterleaved2of5BarCode(string BarCodeText) {
-            // Create a bar code controle.
+            // Create a barcode controle.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Interleaved 2 of 5.
+            // Set the barcode's type to Interleaved 2 of 5.
             barCode.Symbology = new Interleaved2of5Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((Interleaved2of5Generator)barCode.Symbology).CalcCheckSum = false;
             ((Interleaved2of5Generator)barCode.Symbology).WideNarrowRatio = 3;
 
@@ -391,18 +391,18 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateMatrix2of5BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to Matrix 2 of 5.
+            // Set the barcode's type to Matrix 2 of 5.
             barCode.Symbology = new Matrix2of5Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((Matrix2of5Generator)barCode.Symbology).CalcCheckSum = false;
             ((Matrix2of5Generator)barCode.Symbology).WideNarrowRatio = 3;
 
@@ -410,31 +410,31 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateCodeMSIBarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to MSI.
+            // Set the barcode's type to MSI.
             barCode.Symbology = new CodeMSIGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((CodeMSIGenerator)barCode.Symbology).MSICheckSum = MSICheckSum.DoubleModulo10;
 
             return barCode;
         }
 
         public XRBarCode CreatePDF417BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to PDF417.
+            // Set the barcode's type to PDF417.
             barCode.Symbology = new PDF417Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 150;
@@ -443,7 +443,7 @@ namespace BarcodesExample {
             barCode.AutoModule = true;
             //barcode.Module = 3;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((PDF417Generator)barCode.Symbology).Columns = 1;
             ((PDF417Generator)barCode.Symbology).CompactionMode = PDF417CompactionMode.Text;
             ((PDF417Generator)barCode.Symbology).ErrorCorrectionLevel = ErrorCorrectionLevel.Level2;
@@ -455,13 +455,13 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreatePostNetBarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to PostNet.
+            // Set the barcode's type to PostNet.
             barCode.Symbology = new PostNetGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
@@ -470,13 +470,13 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateQRCodeBarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to QRCode.
+            // Set the barcode's type to QRCode.
             barCode.Symbology = new QRCodeGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 150;
@@ -485,7 +485,7 @@ namespace BarcodesExample {
             barCode.AutoModule = true;
             // barcode.Module = 3;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((QRCodeGenerator)barCode.Symbology).CompactionMode = QRCodeCompactionMode.AlphaNumeric;
             ((QRCodeGenerator)barCode.Symbology).ErrorCorrectionLevel = QRCodeErrorCorrectionLevel.H;
             ((QRCodeGenerator)barCode.Symbology).Version = QRCodeVersion.AutoVersion;
@@ -494,32 +494,29 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateSSCCBarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code type to SSCC.
+            // Set the barcode type to SSCC.
             barCode.Symbology = new SSCCGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
             barCode.AutoModule = true;
 
-            // Adjust the properties specific to the bar code type.
-            ((SSCCGenerator)barCode.Symbology).CharacterSet = Code128Charset.CharsetB;
-
             return barCode;
         }
 
         public XRBarCode CreateUPCABarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to UPC-A.
+            // Set the barcode's type to UPC-A.
             barCode.Symbology = new UPCAGenerator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 275;
             barCode.Height = 200;
@@ -528,13 +525,13 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateUPCE0BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to UPC-E0.
+            // Set the barcode's type to UPC-E0.
             barCode.Symbology = new UPCE0Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
@@ -543,13 +540,13 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateUPCE1BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to UPC-E1.
+            // Set the barcode's type to UPC-E1.
             barCode.Symbology = new UPCE1Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 400;
             barCode.Height = 100;
@@ -558,13 +555,13 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateUPCSupplemental2BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to UPC Supplemental 2.
+            // Set the barcode's type to UPC Supplemental 2.
             barCode.Symbology = new UPCSupplemental2Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 100;
             barCode.Height = 55;
@@ -573,13 +570,13 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateUPCSupplemental5BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
-            // Set the bar code's type to UPC Supplemental 5.
+            // Set the barcode's type to UPC Supplemental 5.
             barCode.Symbology = new UPCSupplemental5Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 150;
             barCode.Height = 55;
@@ -588,18 +585,18 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreateITF14BarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
             // Set the barcode's type to ITF-14.  
             barCode.Symbology = new ITF14Generator();
 
-            // Adjust the bar code's main properties.
+            // Adjust the barcode's main properties.
             barCode.Text = BarCodeText;
             barCode.Width = 350;
             barCode.Height = 100;
 
-            // Adjust the properties specific to the bar code type.
+            // Adjust the properties specific to the barcode type.
             ((ITF14Generator)barCode.Symbology).CalcCheckSum = false;
             ((ITF14Generator)barCode.Symbology).WideNarrowRatio = 2.5f;
 
@@ -607,7 +604,7 @@ namespace BarcodesExample {
         }
 
         public XRBarCode CreatePharmacodeBarCode(string BarCodeText) {
-            // Create a bar code control.
+            // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
 
             // Set the type to Pharmacode
