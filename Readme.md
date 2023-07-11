@@ -1,17 +1,17 @@
-<!-- default badges list -->
-[![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/E167)
-[![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
-<!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
+# How to Add a Bar Code to a Report
 
-* [Form1.cs](./CS/WindowsFormsApplication1/Form1.cs) (VB: [Form1.vb](./VB/WindowsFormsApplication1/Form1.vb))
-<!-- default file list end -->
-# How to add a bar code to a report
+This example demonstrates how to add various bar codes to a report at runtime.
 
+![Report with BarCode](Images/screenshot.png)
 
-<p>This example demonstrates how to add <a href="http://documentation.devexpress.com/#XtraReports/CustomDocument2613"><u>bar codes</u></a> to a report in code.</p>
+## Files to Look At
 
-<br/>
+- [Form1.cs](CS/Form1.cs) ([Form1.vb](VB/Form1.vb))
 
+## Documentation
 
+- [Use Bar Codes](https://docs.devexpress.com/XtraReports/2613/detailed-guide-to-devexpress-reporting/use-report-controls/use-bar-codes?v=22.1)
+
+## More Examples
+
+- [How to Create a Custom DevExpress Report Control - Swiss QR Bill Implementation](https://github.com/DevExpress-Examples/Reporting-Custom-Controls)
