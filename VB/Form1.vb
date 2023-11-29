@@ -6,6 +6,7 @@ Imports System.Windows.Forms
 Imports DevExpress.XtraPrinting.BarCode
 Imports DevExpress.XtraReports.UI
 #End Region
+Imports DevExpress.XtraPrinting.BarCode.EPC
 
 Namespace BarcodesExample
 	Partial Public Class Form1
@@ -41,6 +42,8 @@ Namespace BarcodesExample
 			Pharmacode
 			PostNet
 			QRCode
+			QRCodeGS1
+			QRCodeEPC
 			SSCC
 			UPCA
 			UPCE0
@@ -89,6 +92,8 @@ Namespace BarcodesExample
 			list.Add(New BarCode(BarCodeTypes.Pharmacode, "Pharmacode"))
 			list.Add(New BarCode(BarCodeTypes.PostNet, "PostNet"))
 			list.Add(New BarCode(BarCodeTypes.QRCode, "QR Code"))
+			list.Add(New BarCode(BarCodeTypes.QRCodeGS1, "GS1 QR Code"))
+			list.Add(New BarCode(BarCodeTypes.QRCodeEPC, "EPC QR Code"))
 			list.Add(New BarCode(BarCodeTypes.SSCC, "SSCC"))
 			list.Add(New BarCode(BarCodeTypes.UPCA, "UPC-A"))
 			list.Add(New BarCode(BarCodeTypes.UPCE0, "UPC-E0"))
@@ -570,6 +575,62 @@ Namespace BarcodesExample
 		End Function
 #End Region
 
+#Region "QRCodeGS1"
+		Public Function CreateQRCodeGS1BarCode(ByVal BarCodeText As String) As XRBarCode
+			' Create a barcode control.
+			Dim barCode As New XRBarCode()
+
+			' Set the barcode's type to GS1 QR Code.
+			barCode.Symbology = New QRCodeGS1Generator()
+
+			' Adjust the barcode's main properties.
+			barCode.Text = BarCodeText
+			barCode.Width = 400
+			barCode.Height = 150
+
+			' If the AutoModule property is set to false, uncomment the next line.
+			barCode.AutoModule = True
+			' barcode.Module = 3;
+
+			' Adjust the properties specific to the barcode type.
+			CType(barCode.Symbology, QRCodeGS1Generator).CompactionMode = QRCodeCompactionMode.AlphaNumeric
+			CType(barCode.Symbology, QRCodeGS1Generator).FNC1Substitute = "#"
+			CType(barCode.Symbology, QRCodeGS1Generator).ErrorCorrectionLevel = QRCodeErrorCorrectionLevel.H
+			CType(barCode.Symbology, QRCodeGS1Generator).Version = QRCodeVersion.AutoVersion
+
+			Return barCode
+		End Function
+
+		#End Region
+
+		#Region "QRCodeEPC"
+		Public Function CreateQRCodeEPCBarCode() As XRBarCode
+			' Create a barcode control.
+			Dim barCode As New XRBarCode()
+
+			' Set the barcode's type to EPC QR Code.
+			barCode.Symbology = New QRCodeEPCGenerator()
+
+			' Adjust the barcode's main properties.
+			barCode.Width = 400
+			barCode.Height = 400
+			barCode.AutoModule = True
+
+			' Convert data elements into the format required for EPC QR Codes.
+			Dim epcData = New EPCDataConverter() With {
+				.BIC = "BPOTBEB1",
+				.BeneficiaryName = "Red Cross of Belgium",
+				.IBAN = "BE72000000001616",
+				.TransferAmount = 20,
+				.RemittanceInformation = "Urgency Fund"
+			}
+			barCode.Text = epcData.StringData
+
+			Return barCode
+		End Function
+
+		#End Region
+
 #Region "SSCC"
 		Public Function CreateSSCCBarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a barcode control.
@@ -796,6 +857,10 @@ Namespace BarcodesExample
 					barCode = CreatePostNetBarCode("0123456789")
 				Case BarCodeTypes.QRCode
 					barCode = CreateQRCodeBarCode("01234-ABCD")
+				Case BarCodeTypes.QRCodeGS1
+					barCode = CreateQRCodeGS1BarCode("0123456789")
+				Case BarCodeTypes.QRCodeEPC
+					barCode = CreateQRCodeEPCBarCode()
 				Case BarCodeTypes.SSCC
 					barCode = CreateSSCCBarCode("00106141411234567")
 				Case BarCodeTypes.UPCA

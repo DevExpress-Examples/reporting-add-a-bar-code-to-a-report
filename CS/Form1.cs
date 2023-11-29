@@ -4,6 +4,7 @@ using System.Drawing.Printing;
 using System.Windows.Forms;
 using DevExpress.XtraPrinting.BarCode;
 using DevExpress.XtraReports.UI;
+using DevExpress.XtraPrinting.BarCode.EPC;
 
 namespace BarcodesExample {
     public partial class Form1 : Form {
@@ -15,7 +16,7 @@ namespace BarcodesExample {
             Codabar, Code11, Code39, Code39Extended, Code93, Code93Extended, Code128, CodeMSI,
             DataMatrix, DataMatrixGS1, DeutschePostIdentcode, DeutschePostLeitcode, EAN8, EAN13,
             Industrial2of5, IntelligentMail, IntelligentMailPackage, Interleaved2of5, 
-            GS1128, GS1DataBar, Matrix2of5, PDF417, Pharmacode, PostNet, QRCode, 
+            GS1128, GS1DataBar, Matrix2of5, PDF417, Pharmacode, PostNet, QRCode, QRCodeGS1, QRCodeEPC,
             SSCC,UPCA, UPCE0, UPCE1, UPCSupplemental2, UPCSupplemental5, UPCShippingContainer
         };
 
@@ -57,6 +58,8 @@ namespace BarcodesExample {
             list.Add(new BarCode(BarCodeTypes.Pharmacode, "Pharmacode"));
             list.Add(new BarCode(BarCodeTypes.PostNet, "PostNet"));
             list.Add(new BarCode(BarCodeTypes.QRCode, "QR Code"));
+            list.Add(new BarCode(BarCodeTypes.QRCodeGS1, "GS1 QR Code"));
+            list.Add(new BarCode(BarCodeTypes.QRCodeEPC, "EPC QR Code"));
             list.Add(new BarCode(BarCodeTypes.SSCC, "SSCC"));
             list.Add(new BarCode(BarCodeTypes.UPCA, "UPC-A"));
             list.Add(new BarCode(BarCodeTypes.UPCE0, "UPC-E0"));
@@ -493,6 +496,57 @@ namespace BarcodesExample {
             return barCode;
         }
 
+
+        public XRBarCode CreateQRCodeGS1BarCode(string BarCodeText) {
+            // Create a barcode control.
+            XRBarCode barCode = new XRBarCode();
+
+            // Set the barcode's type to GS1 QR Code.
+            barCode.Symbology = new QRCodeGS1Generator();
+
+            // Adjust the barcode's main properties.
+            barCode.Text = BarCodeText;
+            barCode.Width = 400;
+            barCode.Height = 150;
+
+            // If the AutoModule property is set to false, uncomment the next line.
+            barCode.AutoModule = true;
+            // barcode.Module = 3;
+
+            // Adjust the properties specific to the barcode type.
+            ((QRCodeGS1Generator)barCode.Symbology).CompactionMode = QRCodeCompactionMode.AlphaNumeric;
+            ((QRCodeGS1Generator)barCode.Symbology).FNC1Substitute = "#";
+            ((QRCodeGS1Generator)barCode.Symbology).ErrorCorrectionLevel = QRCodeErrorCorrectionLevel.H;
+            ((QRCodeGS1Generator)barCode.Symbology).Version = QRCodeVersion.AutoVersion;
+
+            return barCode;
+        }
+
+        public XRBarCode CreateQRCodeEPCBarCode() {
+            // Create a barcode control.
+            XRBarCode barCode = new XRBarCode();
+
+            // Set the barcode's type to EPC QR Code.
+            barCode.Symbology = new QRCodeEPCGenerator();
+
+            // Adjust the barcode's main properties.
+            barCode.Width = 400;
+            barCode.Height = 400;
+            barCode.AutoModule = true;
+
+            // Convert data elements into the format required for EPC QR Codes.
+            var epcData = new EPCDataConverter() {
+                BIC = "BPOTBEB1",
+                BeneficiaryName = "Red Cross of Belgium",
+                IBAN = "BE72000000001616",
+                TransferAmount = 20,
+                RemittanceInformation = "Urgency Fund",
+            };
+            barCode.Text = epcData.StringData;
+
+            return barCode;
+        }
+
         public XRBarCode CreateSSCCBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -722,6 +776,12 @@ namespace BarcodesExample {
                     break;
                 case BarCodeTypes.QRCode:
                     barCode = CreateQRCodeBarCode("01234-ABCD");
+                    break;
+                case BarCodeTypes.QRCodeGS1:
+                    barCode = CreateQRCodeGS1BarCode("0123456789");
+                    break;
+                case BarCodeTypes.QRCodeEPC:
+                    barCode = CreateQRCodeEPCBarCode();
                     break;
                 case BarCodeTypes.SSCC:
                     barCode = CreateSSCCBarCode("00106141411234567");
