@@ -1,9 +1,11 @@
+#region Usings
 using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 using DevExpress.XtraPrinting.BarCode;
 using DevExpress.XtraReports.UI;
+#endregion
 using DevExpress.XtraPrinting.BarCode.EPC;
 
 namespace BarcodesExample {
@@ -20,6 +22,7 @@ namespace BarcodesExample {
             SSCC,UPCA, UPCE0, UPCE1, UPCSupplemental2, UPCSupplemental5, UPCShippingContainer
         };
 
+        #region DataSource
         private class BarCode {
             public BarCodeTypes Type { get; set; }
             public string DisplayName { get; set; }
@@ -69,7 +72,9 @@ namespace BarcodesExample {
 
             return list;
         }
+        #endregion
 
+        #region Codabar
         public XRBarCode CreateCodabarBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -89,7 +94,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region Code11
         public XRBarCode CreateCode11BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -104,7 +111,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region Code39
         public XRBarCode CreateCode39BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -123,7 +132,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region Code39Extended
         public XRBarCode CreateCode39ExBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -142,7 +153,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region Code93
         public XRBarCode CreateCode93BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -160,7 +173,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region Code93Extended
         public XRBarCode CreateCode93ExBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -178,7 +193,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region Code128
         public XRBarCode CreateCode128BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -196,7 +213,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region EAN8
         public XRBarCode CreateEAN8BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -211,7 +230,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region EAN13
         public XRBarCode CreateEAN13BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -226,7 +247,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region GS1-128-EAN128
         public XRBarCode CreateGS1128BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -244,7 +267,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region GS1-DataBar
         public XRBarCode CreateDataBarGS1BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -264,7 +289,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region DataMatrixECC200
         public XRBarCode CreateDataMatrixBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -287,7 +314,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region DataMatrixGS1
         public XRBarCode CreateDataMatrixGS1BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -310,7 +339,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region Industrial2of5
         public XRBarCode CreateIndustrial2of5BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -329,7 +360,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region IntelligentMail
         public XRBarCode CreateIntelligentMailBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -349,7 +382,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region IntelligentMailPackage
         public XRBarCode CreateIntelligentMailPackageBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -373,7 +408,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region Interleaved2of5
         public XRBarCode CreateInterleaved2of5BarCode(string BarCodeText) {
             // Create a barcode controle.
             XRBarCode barCode = new XRBarCode();
@@ -392,7 +429,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region Matrix2of5
         public XRBarCode CreateMatrix2of5BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -411,7 +450,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region MSI-Plessey
         public XRBarCode CreateCodeMSIBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -429,7 +470,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region PDF417
         public XRBarCode CreatePDF417BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -456,7 +499,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region PostNet
         public XRBarCode CreatePostNetBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -471,7 +516,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region QRCode
         public XRBarCode CreateQRCodeBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -495,7 +542,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region QRCodeGS1
 
         public XRBarCode CreateQRCodeGS1BarCode(string BarCodeText) {
             // Create a barcode control.
@@ -521,7 +570,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region QRCodeEPC
         public XRBarCode CreateQRCodeEPCBarCode() {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -546,7 +597,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region SSCC
         public XRBarCode CreateSSCCBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -562,7 +615,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region UPC-A
         public XRBarCode CreateUPCABarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -577,7 +632,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region UPC-E0
         public XRBarCode CreateUPCE0BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -592,7 +649,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region UPC-E1
         public XRBarCode CreateUPCE1BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -607,7 +666,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region UPCSupplemental2
         public XRBarCode CreateUPCSupplemental2BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -622,7 +683,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region UPCSupplemental5
         public XRBarCode CreateUPCSupplemental5BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -637,7 +700,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region UPCShippingContainer
         public XRBarCode CreateITF14BarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -656,7 +721,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region Pharmacode
         public XRBarCode CreatePharmacodeBarCode(string BarCodeText) {
             // Create a barcode control.
             XRBarCode barCode = new XRBarCode();
@@ -675,7 +742,9 @@ namespace BarcodesExample {
             return barCode;
         }
 
+        #endregion
 
+        #region Leitcode
         public XRBarCode CreateDeutschePostLeitcodeBarCode(string BarCodeText) {
             // Create a XRBarCode control.
             var barCode = new XRBarCode();
@@ -690,7 +759,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region Identcode
         public XRBarCode CreateDeutschePostIdentcodeBarCode(string barcodeText) {
             // Create a XRBarCode control.
             var barCode = new XRBarCode();
@@ -706,7 +777,9 @@ namespace BarcodesExample {
             return barCode;
         }
 
+        #endregion
 
+        #region CreateBarCode
         private XRBarCode CreateBarCode(BarCodeTypes Type) {
             XRBarCode barCode = null;
 
@@ -817,7 +890,9 @@ namespace BarcodesExample {
 
             return barCode;
         }
+        #endregion
 
+        #region PublishReport
         private void button1_Click(object sender, EventArgs e) {
             // Create a barcode of the selected type.
             XRBarCode barCode = CreateBarCode((BarCodeTypes)comboBox1.SelectedValue);
@@ -834,12 +909,15 @@ namespace BarcodesExample {
             // Show the report's preview.
             report.ShowPreview();
         }
+        #endregion
 
+        #region PopulateComboBox
         private void Form1_Load(object sender, EventArgs e) {
             List<BarCode> data = MakeBarCodesList();
             comboBox1.DataSource = data;
             comboBox1.DisplayMember = "DisplayName";
             comboBox1.ValueMember = "Type";
         }
+        #endregion
     }
 }
