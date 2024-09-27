@@ -15,7 +15,7 @@ namespace BarcodesExample {
         }
 
         private enum BarCodeTypes {
-            Codabar, Code11, Code39, Code39Extended, Code93, Code93Extended, Code128, CodeMSI,
+            Aztec, Codabar, Code11, Code39, Code39Extended, Code93, Code93Extended, Code128, CodeMSI,
             DataMatrix, DataMatrixGS1, DeutschePostIdentcode, DeutschePostLeitcode, EAN8, EAN13,
             Industrial2of5, IntelligentMail, IntelligentMailPackage, Interleaved2of5, 
             GS1128, GS1DataBar, Matrix2of5, PDF417, Pharmacode, PostNet, QRCode, QRCodeGS1, QRCodeEPC,
@@ -35,7 +35,7 @@ namespace BarcodesExample {
 
         private List<BarCode> MakeBarCodesList() {
             List<BarCode> list = new List<BarCode>();
-
+            list.Add(new BarCode(BarCodeTypes.Aztec, "Aztec Code"));
             list.Add(new BarCode(BarCodeTypes.Codabar, "Codabar"));
             list.Add(new BarCode(BarCodeTypes.Code11, "Code 11 (USD-8)"));
             list.Add(new BarCode(BarCodeTypes.Code39, "Code 39 (USD-3)"));
@@ -73,6 +73,28 @@ namespace BarcodesExample {
             return list;
         }
         #endregion
+
+        #region Aztec Code
+        public XRBarCode CreateAztecCode(string BarCodeText) {
+            // Create a barcode control.
+            XRBarCode barCode = new XRBarCode();
+
+            // Set the barcode's type to Codabar
+            barCode.Symbology = new AztecCodeGenerator();
+
+            // Adjust the barcode's main properties.
+            barCode.Text = BarCodeText;
+            barCode.Width = 300;
+            barCode.Height = 100;
+
+            // Adjust the properties specific to the barcode type.
+            ((AztecCodeGenerator)barCode.Symbology).Version = AztecCodeVersion.Version27x27;
+            ((AztecCodeGenerator)barCode.Symbology).ErrorCorrectionLevel = AztecCodeErrorCorrectionLevel.Level1;
+            ((AztecCodeGenerator)barCode.Symbology).CompactionMode = AztecCodeCompactionMode.Text;
+
+            return barCode;
+        }
+        #endregion 
 
         #region Codabar
         public XRBarCode CreateCodabarBarCode(string BarCodeText) {
@@ -784,6 +806,9 @@ namespace BarcodesExample {
             XRBarCode barCode = null;
 
             switch (Type) {
+                case BarCodeTypes.Aztec:
+                    barCode = CreateAztecCode("0123-456789");
+                    break;
                 case BarCodeTypes.Codabar:
                     barCode = CreateCodabarBarCode("0123-456789");
                     break;

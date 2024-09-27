@@ -17,6 +17,7 @@ Namespace BarcodesExample
 		End Sub
 
 		Private Enum BarCodeTypes
+			Aztec
 			Codabar
 			Code11
 			Code39
@@ -66,7 +67,7 @@ Namespace BarcodesExample
 
 		Private Function MakeBarCodesList() As List(Of BarCode)
 			Dim list As New List(Of BarCode)()
-
+			list.Add(New BarCode(BarCodeTypes.Aztec, "Aztec Code"))
 			list.Add(New BarCode(BarCodeTypes.Codabar, "Codabar"))
 			list.Add(New BarCode(BarCodeTypes.Code11, "Code 11 (USD-8)"))
 			list.Add(New BarCode(BarCodeTypes.Code39, "Code 39 (USD-3)"))
@@ -103,9 +104,31 @@ Namespace BarcodesExample
 
 			Return list
 		End Function
-		#End Region
+#End Region
 
-		#Region "Codabar"
+#Region "Aztec Code"
+		Public Function CreateAztecCode(ByVal BarCodeText As String) As XRBarCode
+			' Create a barcode control.
+			Dim barCode As New XRBarCode()
+
+			' Set the barcode's type to Codabar
+			barCode.Symbology = New AztecCodeGenerator()
+
+			' Adjust the barcode's main properties.
+			barCode.Text = BarCodeText
+			barCode.Width = 300
+			barCode.Height = 100
+
+			' Adjust the properties specific to the barcode type.
+			CType(barCode.Symbology, AztecCodeGenerator).Version = AztecCodeVersion.Version27x27
+			CType(barCode.Symbology, AztecCodeGenerator).ErrorCorrectionLevel = AztecCodeErrorCorrectionLevel.Level1
+			CType(barCode.Symbology, AztecCodeGenerator).CompactionMode = AztecCodeCompactionMode.Text
+
+			Return barCode
+		End Function
+#End Region
+
+#Region "Codabar"
 		Public Function CreateCodabarBarCode(ByVal BarCodeText As String) As XRBarCode
 			' Create a barcode control.
 			Dim barCode As New XRBarCode()
@@ -813,6 +836,8 @@ Namespace BarcodesExample
 			Dim barCode As XRBarCode = Nothing
 
 			Select Case Type
+				Case BarCodeTypes.Aztec
+					barCode = CreateAztecCode("0123-456789")
 				Case BarCodeTypes.Codabar
 					barCode = CreateCodabarBarCode("0123-456789")
 				Case BarCodeTypes.Code11
