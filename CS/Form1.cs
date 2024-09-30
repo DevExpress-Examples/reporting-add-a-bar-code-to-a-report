@@ -18,7 +18,7 @@ namespace BarcodesExample {
             Aztec, Codabar, Code11, Code39, Code39Extended, Code93, Code93Extended, Code128, CodeMSI,
             DataMatrix, DataMatrixGS1, DeutschePostIdentcode, DeutschePostLeitcode, EAN8, EAN13,
             Industrial2of5, IntelligentMail, IntelligentMailPackage, Interleaved2of5, 
-            GS1128, GS1DataBar, Matrix2of5, PDF417, Pharmacode, PostNet, QRCode, QRCodeGS1, QRCodeEPC,
+            GS1128, GS1DataBar, Matrix2of5, PDF417, Pharmacode, PostNet, QRCode, QRCodeGS1, QRCodeEPC, MicroQRCode,
             SSCC,UPCA, UPCE0, UPCE1, UPCSupplemental2, UPCSupplemental5, UPCShippingContainer
         };
 
@@ -63,6 +63,7 @@ namespace BarcodesExample {
             list.Add(new BarCode(BarCodeTypes.QRCode, "QR Code"));
             list.Add(new BarCode(BarCodeTypes.QRCodeGS1, "GS1 QR Code"));
             list.Add(new BarCode(BarCodeTypes.QRCodeEPC, "EPC QR Code"));
+            list.Add(new BarCode(BarCodeTypes.MicroQRCode,"Micro QR Code"));
             list.Add(new BarCode(BarCodeTypes.SSCC, "SSCC"));
             list.Add(new BarCode(BarCodeTypes.UPCA, "UPC-A"));
             list.Add(new BarCode(BarCodeTypes.UPCE0, "UPC-E0"));
@@ -473,7 +474,7 @@ namespace BarcodesExample {
             return barCode;
         }
         #endregion
-
+        
         #region MSI-Plessey
         public XRBarCode CreateCodeMSIBarCode(string BarCodeText) {
             // Create a barcode control.
@@ -561,6 +562,32 @@ namespace BarcodesExample {
             ((QRCodeGenerator)barCode.Symbology).CompactionMode = QRCodeCompactionMode.AlphaNumeric;
             ((QRCodeGenerator)barCode.Symbology).ErrorCorrectionLevel = QRCodeErrorCorrectionLevel.H;
             ((QRCodeGenerator)barCode.Symbology).Version = QRCodeVersion.AutoVersion;
+
+            return barCode;
+        }
+        #endregion
+
+        #region MicroQRCode
+        public XRBarCode CreateMicroQRCodeBarCode(string BarCodeText) {
+            // Create a barcode control.
+            XRBarCode barCode = new XRBarCode();
+
+            // Set the barcode's type to QRCode.
+            barCode.Symbology = new MicroQRCodeGenerator();
+
+            // Adjust the barcode's main properties.
+            barCode.Text = BarCodeText;
+            barCode.Width = 150;
+            barCode.Height = 150;
+
+            // If the AutoModule property is set to false, uncomment the next line.
+            barCode.AutoModule = true;
+            // barcode.Module = 3;
+
+            // Adjust the properties specific to the barcode type.
+            ((MicroQRCodeGenerator)barCode.Symbology).IncludeQuietZone = true;
+            ((MicroQRCodeGenerator)barCode.Symbology).ErrorCorrectionLevel = MicroQRCodeErrorCorrectionLevel.L;
+            ((MicroQRCodeGenerator)barCode.Symbology).Version = MicroQRCodeVersion.AutoVersion;
 
             return barCode;
         }
@@ -880,6 +907,9 @@ namespace BarcodesExample {
                     break;
                 case BarCodeTypes.QRCodeEPC:
                     barCode = CreateQRCodeEPCBarCode();
+                    break;
+                case BarCodeTypes.MicroQRCode:
+                    barCode = CreateMicroQRCodeBarCode("0123456789");
                     break;
                 case BarCodeTypes.SSCC:
                     barCode = CreateSSCCBarCode("00106141411234567");
