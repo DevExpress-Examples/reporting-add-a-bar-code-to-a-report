@@ -45,6 +45,7 @@ Namespace BarcodesExample
 			QRCode
 			QRCodeGS1
 			QRCodeEPC
+			MicroQRCode
 			SSCC
 			UPCA
 			UPCE0
@@ -55,6 +56,8 @@ Namespace BarcodesExample
 		End Enum
 
 #Region "DataSource"
+
+
 		Private Class BarCode
 			Public Property Type() As BarCodeTypes
 			Public Property DisplayName() As String
@@ -95,6 +98,7 @@ Namespace BarcodesExample
 			list.Add(New BarCode(BarCodeTypes.QRCode, "QR Code"))
 			list.Add(New BarCode(BarCodeTypes.QRCodeGS1, "GS1 QR Code"))
 			list.Add(New BarCode(BarCodeTypes.QRCodeEPC, "EPC QR Code"))
+			list.Add(New BarCode(BarCodeTypes.MicroQRCode, "Micro QR Code"))
 			list.Add(New BarCode(BarCodeTypes.SSCC, "SSCC"))
 			list.Add(New BarCode(BarCodeTypes.UPCA, "UPC-A"))
 			list.Add(New BarCode(BarCodeTypes.UPCE0, "UPC-E0"))
@@ -652,7 +656,33 @@ Namespace BarcodesExample
 			Return barCode
 		End Function
 
-		#End Region
+#End Region
+
+#Region "MicroQRCode"
+		Public Function CreateMicroQRCodeBarCode(ByVal BarCodeText As String) As XRBarCode
+			' Create a barcode control.
+			Dim barCode As New XRBarCode()
+
+			' Set the barcode's type to QRCode.
+			barCode.Symbology = New MicroQRCodeGenerator()
+
+			' Adjust the barcode's main properties.
+			barCode.Text = BarCodeText
+			barCode.Width = 150
+			barCode.Height = 150
+
+			' If the AutoModule property is set to false, uncomment the next line.
+			barCode.AutoModule = True
+			' barcode.Module = 3;
+
+			' Adjust the properties specific to the barcode type.
+			CType(barCode.Symbology, MicroQRCodeGenerator).CompactionMode = MicroQRCodeCompactionMode.AlphaNumeric
+			CType(barCode.Symbology, MicroQRCodeGenerator).ErrorCorrectionLevel = MicroQRCodeErrorCorrectionLevel.L
+			CType(barCode.Symbology, MicroQRCodeGenerator).Version = MicroQRCodeVersion.AutoVersion
+
+			Return barCode
+		End Function
+#End Region
 
 #Region "SSCC"
 		Public Function CreateSSCCBarCode(ByVal BarCodeText As String) As XRBarCode
@@ -886,6 +916,8 @@ Namespace BarcodesExample
 					barCode = CreateQRCodeGS1BarCode("0123456789")
 				Case BarCodeTypes.QRCodeEPC
 					barCode = CreateQRCodeEPCBarCode()
+				Case BarCodeTypes.MicroQRCode
+					barCode = CreateMicroQRCodeBarCode("01234-ABCD")
 				Case BarCodeTypes.SSCC
 					barCode = CreateSSCCBarCode("00106141411234567")
 				Case BarCodeTypes.UPCA
