@@ -585,7 +585,7 @@ namespace BarcodesExample {
             // barcode.Module = 3;
 
             // Adjust the properties specific to the barcode type.
-            ((MicroQRCodeGenerator)barCode.Symbology).IncludeQuietZone = true;
+            ((MicroQRCodeGenerator)barCode.Symbology).CompactionMode = MicroQRCodeCompactionMode.AlphaNumeric;
             ((MicroQRCodeGenerator)barCode.Symbology).ErrorCorrectionLevel = MicroQRCodeErrorCorrectionLevel.L;
             ((MicroQRCodeGenerator)barCode.Symbology).Version = MicroQRCodeVersion.AutoVersion;
 
@@ -909,7 +909,7 @@ namespace BarcodesExample {
                     barCode = CreateQRCodeEPCBarCode();
                     break;
                 case BarCodeTypes.MicroQRCode:
-                    barCode = CreateMicroQRCodeBarCode("0123456789");
+                    barCode = CreateMicroQRCodeBarCode("01234-ABCD");
                     break;
                 case BarCodeTypes.SSCC:
                     barCode = CreateSSCCBarCode("00106141411234567");
