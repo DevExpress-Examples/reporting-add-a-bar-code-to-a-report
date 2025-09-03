@@ -15,7 +15,7 @@ This example adds various bar codes to a report at runtime.
 
 ## Documentation
 
-- [Use Bar Codes](https://docs.devexpress.com/XtraReports/2613/detailed-guide-to-devexpress-reporting/use-report-controls/use-bar-codes?v=22.1)
+- [Use Bar Codes](https://docs.devexpress.com/XtraReports/2613/detailed-guide-to-devexpress-reporting/use-report-controls/use-bar-codes)
 
 ## More Examples
 
@@ -27,3 +27,4 @@ This example adds various bar codes to a report at runtime.
 
 (you will be redirected to DevExpress.com to submit your response)
 <!-- feedback end -->
+
